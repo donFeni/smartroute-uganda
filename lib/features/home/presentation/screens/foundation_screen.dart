@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class FoundationScreen extends StatelessWidget {
@@ -42,10 +41,7 @@ class FoundationScreen extends StatelessWidget {
                 const SizedBox(height: 32),
                 const Text(
                   'Project foundation established.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
                 ),
               ],
             ),
@@ -55,4 +51,3 @@ class FoundationScreen extends StatelessWidget {
     );
   }
 }
-

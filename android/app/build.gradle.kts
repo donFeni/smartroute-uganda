@@ -5,7 +5,9 @@ plugins {
 }
 
 android {
-    namespace = "ug.co.smartroute.smartroute_uganda"
+    // SmartRoute Uganda — Application ID
+    // This ID is used on the Google Play Store and cannot be changed after publishing.
+    namespace = "ug.smartroute.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -15,25 +17,38 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "ug.co.smartroute.smartroute_uganda"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        applicationId = "ug.smartroute.app"
+        // Android 6.0+ (API 23) required for runtime location permissions.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        // Uses the version code from pubspec.yaml. When using split APKs, 1000 * ABI_VERSION
-        // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
-        // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
-        // flag during build.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // ── Release signing ──────────────────────────────────────────────
+            // Before publishing to Google Play, replace with a proper keystore:
+            //
+            //   1. Generate a release keystore:
+            //      keytool -genkey -v -keystore smartroute-release.jks \
+            //        -alias smartroute -keyalg RSA -keysize 2048 -validity 10000
+            //
+            //   2. Create android/key.properties (git-ignored):
+            //      storePassword=<store_password>
+            //      keyPassword=<key_password>
+            //      keyAlias=smartroute
+            //      storeFile=<absolute_path>/smartroute-release.jks
+            //
+            //   3. Load the properties and update signingConfigs here.
+            //
+            // For demonstration builds, debug signing is used.
+            // This allows `flutter build apk --release` to work for testing.
+            // DO NOT distribute a debug-signed APK on Google Play.
             signingConfig = signingConfigs.getByName("debug")
+
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }

@@ -46,3 +46,10 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# SmartRoute environment secrets — NEVER commit
+.env
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist

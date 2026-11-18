@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Internet permission required for map tile loading -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Foreground location permissions — requested only when user initiates location action -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
-        android:label="smartroute_uganda"
+        android:label="SmartRoute Uganda"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
